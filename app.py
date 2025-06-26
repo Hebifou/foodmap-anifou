@@ -40,7 +40,7 @@ with st.sidebar:
 
 daten = lebensmittel_daten[selected_kategorie][selected_item]
 
-st.image("assets/body.jpg", caption=f"Wirkung von {selected_item}", use_column_width=True)
+st.image("body.jpg", width=400, caption=f"Wirkung von {selected_item}")
 st.markdown(f"### 🥑 {selected_item}")
 st.markdown(f"**Wirkung:** {daten['wirkung']}")
 st.markdown(f"**Empfohlene Menge:** {daten['menge']}")
