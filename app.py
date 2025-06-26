@@ -50,7 +50,8 @@ daten = lebensmittel_daten[selected_kategorie][selected_item]
 col1, col2, col3 = st.columns([1, 2, 1])
 
 with col2:
-    st.image("body.png", width=400, caption=f"Wirkung von {selected_item}")
+    
+    st.image("body.png", width=300, caption=f"Wirkung von {selected_item}")
     st.markdown(f"### 🥑 {selected_item}")
     st.markdown(f"**Wirkung:** {daten['wirkung']}")
     st.markdown(f"**Empfohlene Menge:** {daten['menge']}")
