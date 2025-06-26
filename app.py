@@ -7,18 +7,42 @@ with st.sidebar:
     st.markdown("### Lebensmittel")
     item = st.radio("Wähle ein Lebensmittel", ["Apfel", "Datteln", "Linsen", "Leinöl"])
 
-if item == "Apfel":
-    st.image("OKY6FW0.jpg", caption="Wirkung auf: Haut, Gehirn, Verdauung", use_column_width=True)
-    st.markdown("**Apfel:** Reich an Ballaststoffen und Antioxidantien – gut für Darm, Haut & Gehirn.\
-                 Empfohlene Menge: 1-2 Stück pro Tag.")
-elif item == "Datteln":
-    st.image("OKY6FW0.jpg", caption="Wirkung auf: Energie, Verdauung, Nerven", use_column_width=True)
-    st.markdown("**Datteln:** Natürliche Energiequelle, liefern Kalium & Ballaststoffe.\
-                 Empfohlene Menge: 3–5 Stück pro Tag.")
-elif item == "Linsen":
-    st.image("OKY6FW0.jpg", caption="Wirkung auf: Muskeln, Blutbildung", use_column_width=True)
-    st.markdown("**Linsen:** Proteinreich, eisenhaltig – unterstützt Muskelaufbau & Blutbildung.")
-elif item == "Leinöl":
-    st.image("OKY6FW0.jpg", caption="Wirkung auf: Entzündungen, Gehirn, Haut", use_column_width=True)
-    st.markdown("**Leinöl:** Reich an Omega-3 – gut für Haut, Hirn & Zellschutz.\
-                 1 TL täglich empfohlen (nicht erhitzen).")
+lebensmittel_daten = {
+    "Früchte": {
+        "Apfel": {
+            "wirkung": "Reich an Ballaststoffen und Antioxidantien – gut für Darm, Haut & Gehirn.",
+            "menge": "1–2 Stück pro Tag.",
+            "quelle": "DGE"
+        },
+        "Kiwi": {
+            "wirkung": "Vitamin-C-reich, stärkt das Immunsystem und unterstützt die Verdauung.",
+            "menge": "1–2 Stück täglich.",
+            "quelle": "Harvard Health Publishing"
+        }
+    },
+    "Hülsenfrüchte": {
+        "Kichererbsen": {
+            "wirkung": "Proteinreich, fördern Muskelaufbau und sättigen nachhaltig.",
+            "menge": "1 Portion (ca. 150g) pro Tag.",
+            "quelle": "DGE"
+        },
+        "Linsen": {
+            "wirkung": "Reich an Eiweiß und Eisen – wichtig für Blutbildung und Energie.",
+            "menge": "1 Portion (ca. 150g) pro Tag.",
+            "quelle": "DGE"
+        }
+    },
+    # …weitere Kategorien folgen hier (nach dem CSV)
+}
+with st.sidebar:
+    selected_kategorie = st.selectbox("Kategorie", list(lebensmittel_daten.keys()))
+    selected_item = st.selectbox("Lebensmittel", list(lebensmittel_daten[selected_kategorie].keys()))
+
+daten = lebensmittel_daten[selected_kategorie][selected_item]
+
+st.image("assets/body.jpg", caption=f"Wirkung von {selected_item}", use_column_width=True)
+st.markdown(f"### 🥑 {selected_item}")
+st.markdown(f"**Wirkung:** {daten['wirkung']}")
+st.markdown(f"**Empfohlene Menge:** {daten['menge']}")
+st.markdown(f"**Quelle:** *{daten['quelle']}*")
+
