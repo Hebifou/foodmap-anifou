@@ -1,0 +1,2 @@
+# foodmap-anifou
+Interaktive Ernährungssimulation
