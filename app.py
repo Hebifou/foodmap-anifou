@@ -3,10 +3,9 @@ import streamlit as st
 st.set_page_config(layout="wide", page_title="Foodmap")
 st.markdown("<h1 style='text-align: center;'>Foodmap – Wirkung von Lebensmitteln im Körper</h1>", unsafe_allow_html=True)
 
-with st.sidebar:
-    st.markdown("### Lebensmittel")
-    item = st.radio("Wähle ein Lebensmittel", ["Apfel", "Datteln", "Linsen", "Leinöl"])
-
+# ----------------------------
+# Datenstruktur mit Kategorien
+# ----------------------------
 lebensmittel_daten = {
     "Früchte": {
         "Apfel": {
@@ -31,18 +30,28 @@ lebensmittel_daten = {
             "menge": "1 Portion (ca. 150g) pro Tag.",
             "quelle": "DGE"
         }
-    },
-    # …weitere Kategorien folgen hier (nach dem CSV)
+    }
+    # Weitere Kategorien folgen...
 }
+
+# ----------------------------
+# Sidebar für Auswahl
+# ----------------------------
 with st.sidebar:
+    st.markdown("### Lebensmittel-Auswahl")
     selected_kategorie = st.selectbox("Kategorie", list(lebensmittel_daten.keys()))
     selected_item = st.selectbox("Lebensmittel", list(lebensmittel_daten[selected_kategorie].keys()))
 
 daten = lebensmittel_daten[selected_kategorie][selected_item]
 
-st.image("body.jpg", width=400, caption=f"Wirkung von {selected_item}")
-st.markdown(f"### 🥑 {selected_item}")
-st.markdown(f"**Wirkung:** {daten['wirkung']}")
-st.markdown(f"**Empfohlene Menge:** {daten['menge']}")
-st.markdown(f"**Quelle:** *{daten['quelle']}*")
+# ----------------------------
+# Anzeige im Hauptbereich
+# ----------------------------
+col1, col2, col3 = st.columns([1, 2, 1])
 
+with col2:
+    st.image("assets/body.jpg", width=400, caption=f"Wirkung von {selected_item}")
+    st.markdown(f"### 🥑 {selected_item}")
+    st.markdown(f"**Wirkung:** {daten['wirkung']}")
+    st.markdown(f"**Empfohlene Menge:** {daten['menge']}")
+    st.markdown(f"**Quelle:** *{daten['quelle']}*")
