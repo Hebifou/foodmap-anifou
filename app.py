@@ -8,7 +8,7 @@ with st.sidebar:
     item = st.radio("Wähle ein Lebensmittel", ["Apfel", "Datteln", "Linsen", "Leinöl"])
 
 if item == "Apfel":
-    st.image("assets/body.png", caption="Wirkung auf: Haut, Gehirn, Verdauung", use_column_width=True)
+    st.image("assets/body.jpg", caption="Wirkung auf: Haut, Gehirn, Verdauung", use_column_width=True)
     st.markdown("**Apfel:** Reich an Ballaststoffen und Antioxidantien – gut für Darm, Haut & Gehirn.\
                  Empfohlene Menge: 1-2 Stück pro Tag.")
 elif item == "Datteln":
