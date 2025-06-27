@@ -11,28 +11,28 @@ lebensmittel_daten = {
         "Apfel": {
             "wirkung": "Reich an Ballaststoffen und Antioxidantien – gut für Darm, Haut & Gehirn.",
             "menge": "1–2 Stück pro Tag.",
-            "quelle": "DGE"
-        },
-        "Kiwi": {
-            "wirkung": "Vitamin-C-reich, stärkt das Immunsystem und unterstützt die Verdauung.",
-            "menge": "1–2 Stück täglich.",
-            "quelle": "Harvard Health Publishing"
+            "quelle": "DGE",
+            "bereiche": {
+                "Darm": "Fördert die Verdauung und unterstützt das Mikrobiom.",
+                "Haut": "Antioxidantien helfen beim Zellschutz.",
+                "Gehirn": "Liefert Energie für Konzentration und mentale Leistung."
+            }
         }
     },
     "Hülsenfrüchte": {
-        "Kichererbsen": {
-            "wirkung": "Proteinreich, fördern Muskelaufbau und sättigen nachhaltig.",
-            "menge": "1 Portion (ca. 150g) pro Tag.",
-            "quelle": "DGE"
-        },
         "Linsen": {
             "wirkung": "Reich an Eiweiß und Eisen – wichtig für Blutbildung und Energie.",
             "menge": "1 Portion (ca. 150g) pro Tag.",
-            "quelle": "DGE"
+            "quelle": "DGE",
+            "bereiche": {
+                "Muskeln": "Proteinreich – unterstützt den Muskelaufbau.",
+                "Blut": "Enthält Eisen – fördert die Blutbildung.",
+                "Nerven": "Hilft beim Energiestoffwechsel und der Nervengesundheit."
+            }
         }
     }
-    # Weitere Kategorien folgen...
 }
+
 
 # ----------------------------
 # Sidebar für Auswahl
@@ -56,3 +56,9 @@ with col2:
     st.markdown(f"**Wirkung:** {daten['wirkung']}")
     st.markdown(f"**Empfohlene Menge:** {daten['menge']}")
     st.markdown(f"**Quelle:** *{daten['quelle']}*")
+
+if "bereiche" in daten:
+    st.markdown("### 🧬 Wirkung nach Körperregion")
+    for region, beschreibung in daten["bereiche"].items():
+        st.markdown(f"**🔹 {region}:** {beschreibung}")
+
