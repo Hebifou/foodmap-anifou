@@ -53,7 +53,7 @@ with st.sidebar:
     if "bereiche" in daten:
         st.markdown("### Wirkung nach Körperregion")
         for region, beschreibung in daten["bereiche"].items():
-            st.markdown(f"🔹 **{region}:** {beschreibung}")
+            st.markdown(f"**{region}:** {beschreibung}")
 
 # ----------------------------
 # Hauptbereich – Bildanzeige
