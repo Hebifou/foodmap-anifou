@@ -1,7 +1,6 @@
 import streamlit as st
 
 st.set_page_config(layout="wide", page_title="Foodmap")
-st.markdown("<h1 style='text-align: left;'>Wirkung nach Körperregion</h1>", unsafe_allow_html=True)
 
 # ----------------------------
 # Datenstruktur mit Kategorien
@@ -33,32 +32,32 @@ lebensmittel_daten = {
     }
 }
 
-
 # ----------------------------
-# Sidebar für Auswahl
+# Sidebar – Auswahl & Infos
 # ----------------------------
 with st.sidebar:
+    st.markdown("### Wirkung nach Körperregion")
+
     st.markdown("### Lebensmittel-Auswahl")
     selected_kategorie = st.selectbox("Kategorie", list(lebensmittel_daten.keys()))
     selected_item = st.selectbox("Lebensmittel", list(lebensmittel_daten[selected_kategorie].keys()))
 
-daten = lebensmittel_daten[selected_kategorie][selected_item]
+    daten = lebensmittel_daten[selected_kategorie][selected_item]
 
-# ----------------------------
-# Anzeige im Hauptbereich
-# ----------------------------
-col1, col2, col3 = st.columns([1, 2, 1])
-
-with col2:
-    
-    st.image("body.png", width=500, caption=f"Wirkung von {selected_item}")
-    st.markdown(f"### {selected_item}")
+    st.markdown("---")
+    st.markdown(f"###{selected_item}")
     st.markdown(f"**Wirkung:** {daten['wirkung']}")
-    st.markdown(f"**Empfohlene Menge:** {daten['menge']}")
+    st.markdown(f"**Menge:** {daten['menge']}")
     st.markdown(f"**Quelle:** *{daten['quelle']}*")
 
-if "bereiche" in daten:
-    st.markdown("### 🧬 Wirkung nach Körperregion")
-    for region, beschreibung in daten["bereiche"].items():
-        st.markdown(f"**🔹 {region}:** {beschreibung}")
+    if "bereiche" in daten:
+        st.markdown("### Wirkung nach Körperregion")
+        for region, beschreibung in daten["bereiche"].items():
+            st.markdown(f"🔹 **{region}:** {beschreibung}")
 
+# ----------------------------
+# Hauptbereich – Bildanzeige
+# ----------------------------
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image("body.png", width=500, caption=f"Wirkung von {selected_item}")
