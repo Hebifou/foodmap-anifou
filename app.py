@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(layout="wide", page_title="Foodmap")
-st.markdown("<h1 style='text-align: left;'>Foodmap – \nWirkung von Lebensmitteln im Körper</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: left;'>Foodmap – \n Wirkung von Lebensmitteln im Körper</h1>", unsafe_allow_html=True)
 
 # ----------------------------
 # Datenstruktur mit Kategorien
