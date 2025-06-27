@@ -52,7 +52,7 @@ col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
     
     st.image("body.png", width=1000, caption=f"Wirkung von {selected_item}")
-    st.markdown(f"### 🥑 {selected_item}")
+    st.markdown(f"### {selected_item}")
     st.markdown(f"**Wirkung:** {daten['wirkung']}")
     st.markdown(f"**Empfohlene Menge:** {daten['menge']}")
     st.markdown(f"**Quelle:** *{daten['quelle']}*")
